@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+    database:
+        image: postgres:latest
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: 123456
+            PGDATA: /pg-data
+        ports:
+            - 5432:5432
+        volumes:
+            - pg-data:/pg-data
+volumes:
+    pg-data:
