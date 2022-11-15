@@ -1,5 +1,5 @@
 export default {
-    roots: ['<rootDir>/test'],
+    roots: ['<rootDir>/tests'],
     clearMocks: true,
     collectCoverage: true,
     collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
