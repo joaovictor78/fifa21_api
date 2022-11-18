@@ -9,5 +9,5 @@ export const typeOrmConfig = new DataSource({
     database: 'postgres',
     migrations: [__dirname + '/migration/*{.ts,.js}'],
     entities: [__dirname + '/../**/*.model{.ts,.js}'],
-    synchronize: true,
+    synchronize: true
 });
