@@ -2,6 +2,7 @@ import PlayerFinancialDataEntity from './player-financial-data.entity';
 import PlayerPhysicalCharacteristicsEntity from './player-physical-characteristics.entity';
 import PlayerPotentialByPositionEntity from './player-potential-by-position.entity';
 import PlayerSkillsEntity from './player-skills.entity';
+import PositionEntity from './position.entity';
 
 export default class PlayerEntity {
     public readonly sofifa_id: number;
@@ -14,7 +15,7 @@ export default class PlayerEntity {
     public readonly league_rank: number;
     public readonly overall: number;
     public readonly potential: number;
-    public readonly player_positions: string[];
+    public readonly player_positions: PositionEntity[];
     public readonly preferred_foot: string;
     public readonly international_reputation: number;
     public readonly weak_foot: number;
@@ -34,10 +35,10 @@ export default class PlayerEntity {
     public readonly dribbling: number;
     public readonly defending: number;
     public readonly physic: number;
-    public readonly physical_caracteristics: PlayerPhysicalCharacteristicsEntity;
-    public readonly financial_data: PlayerFinancialDataEntity;
     public readonly skills: PlayerSkillsEntity;
     public readonly potential_by_position: PlayerPotentialByPositionEntity;
+    public readonly physical_caracteristics: PlayerPhysicalCharacteristicsEntity;
+    public readonly financial_data: PlayerFinancialDataEntity;
 
     constructor({
         sofifa_id,
@@ -73,7 +74,7 @@ export default class PlayerEntity {
         physical_caracteristics,
         financial_data,
         skills,
-        potential_by_position,
+        potential_by_position
     }: {
         sofifa_id: number;
         player_url: string;
@@ -86,7 +87,7 @@ export default class PlayerEntity {
         league_rank: number;
         overall: number;
         potential: number;
-        player_positions: string[];
+        player_positions: PositionEntity[];
         preferred_foot: string;
         international_reputation: number;
         weak_foot: number;
