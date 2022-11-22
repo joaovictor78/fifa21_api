@@ -12,7 +12,7 @@ export default class PlayerPhysicalCharacteristicsEntity {
         weight_kg,
         dob,
         body_type,
-        real_face,
+        real_face
     }: {
         age: number;
         height_cm: number;

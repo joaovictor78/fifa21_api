@@ -6,7 +6,7 @@ export default class PlayerFinancialDataEntity {
     constructor({
         value_eur,
         wage_eur,
-        release_clause_eur,
+        release_clause_eur
     }: {
         value_eur: number;
         wage_eur: number;

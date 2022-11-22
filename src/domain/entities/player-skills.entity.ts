@@ -82,7 +82,7 @@ export default class PlayerSkillsEntity {
         goalkeeping_handling,
         goalkeeping_kicking,
         goalkeeping_positioning,
-        goalkeeping_reflexes,
+        goalkeeping_reflexes
     }: {
         gk_diving: number;
         gk_handling: number;

@@ -1,8 +1,11 @@
+import LeagueEntity from '../../domain/entities/league.entity';
+import NationalityEntity from '../..//domain/entities/nationality.entity';
+import PlayerEntity from '../..//domain/entities/player.entity';
+import PositionEntity from '../..//domain/entities/position.entity';
 import {
     Column,
     Entity,
     PrimaryColumn,
-    OneToMany,
     ManyToMany,
     JoinTable,
     ManyToOne
@@ -11,6 +14,11 @@ import LeagueModel from './league.model';
 import NationalityModel from './nationality.model';
 import PositionModel from './position.model';
 import TeamModel from './team.model';
+import PlayerParameters from '../../domain/ports/query-parameters/player-parameters';
+import PlayerPhysicalCharacteristicsEntity from '../../domain/entities/player-physical-characteristics.entity';
+import PlayerFinancialDataEntity from '../../domain/entities/player-financial-data.entity';
+import PlayerSkillsEntity from '../../domain/entities/player-skills.entity';
+import PlayerPotentialByPositionEntity from '../../domain/entities/player-potential-by-position.entity';
 
 @Entity('player')
 export default class PlayerModel {
@@ -40,15 +48,17 @@ export default class PlayerModel {
     wage_eur: number;
     @Column()
     release_clause_eur: number;
-    @ManyToOne(() => NationalityModel, () => PlayerModel)
+    @ManyToOne(() => NationalityModel, () => PlayerModel, { eager: true })
     nationality: NationalityModel;
-    @ManyToOne(() => TeamModel, () => PlayerModel)
-    club_name: string;
-    @ManyToOne(() => LeagueModel, () => PlayerModel)
+    @ManyToOne(() => TeamModel, () => PlayerModel, { eager: true })
+    team: TeamModel;
+    @ManyToOne(() => LeagueModel, () => PlayerModel, { eager: true })
     league: LeagueModel;
     @Column()
     league_rank: number;
-    @ManyToMany(() => PositionModel, position => position.players)
+    @ManyToMany(() => PositionModel, position => position.players, {
+        eager: true
+    })
     @JoinTable({
         name: 'players_positions',
         joinColumn: {
@@ -60,7 +70,7 @@ export default class PlayerModel {
             referencedColumnName: 'position_id'
         }
     })
-    player_positions: PositionModel;
+    player_positions: PositionModel[];
     @Column()
     overall: number;
     @Column()
@@ -237,56 +247,65 @@ export default class PlayerModel {
     rcb: string;
     @Column()
     rb: string;
-    @Column()
-    ls_whitout_ir: number;
-    @Column()
-    st_whitout_ir: number;
-    @Column()
-    rs_whitout_ir: number;
-    @Column()
-    lw_whitout_ir: number;
-    @Column()
-    lf_whitout_ir: number;
-    @Column()
-    cf_whitout_ir: number;
-    @Column()
-    rf_whitout_ir: number;
-    @Column()
-    rw_whitout_ir: number;
-    @Column()
-    lam_whitout_ir: number;
-    @Column()
-    cam_whitout_ir: number;
-    @Column()
-    ram_whitout_ir: number;
-    @Column()
-    lm_whitout_ir: number;
-    @Column()
-    lcm_whitout_ir: number;
-    @Column()
-    cm_whitout_ir: number;
-    @Column()
-    rcm_whitout_ir: number;
-    @Column()
-    rm_whitout_ir: number;
-    @Column()
-    lwb_whitout_ir: number;
-    @Column()
-    ldm_whitout_ir: number;
-    @Column()
-    cdm_whitout_ir: number;
-    @Column()
-    rdm_whitout_ir: number;
-    @Column()
-    rwb_whitout_ir: number;
-    @Column()
-    lb_whitout_ir: number;
-    @Column()
-    lcb_whitout_ir: number;
-    @Column()
-    cb_whitout_ir: number;
-    @Column()
-    rcb_whitout_ir: number;
-    @Column()
-    rb_whitout_ir: number;
+
+    static convertToModel(player: PlayerParameters): PlayerModel {
+        let league: LeagueModel = new LeagueModel();
+        let team: TeamModel = new TeamModel();
+        let nationality: NationalityModel = new NationalityModel();
+        let physical_caracteristics = new PlayerPhysicalCharacteristicsEntity(
+            player
+        );
+        let skills = new PlayerSkillsEntity(player);
+        let potential_by_position = new PlayerPotentialByPositionEntity(player);
+        let financial_data = new PlayerFinancialDataEntity(player);
+        let player_positions: PositionModel[] = player.player_positions_id.map(
+            value => {
+                const position = new PositionModel();
+                position.position_id = value;
+                return position;
+            }
+        );
+        nationality.nationality_id = player.nationality_id;
+        league.league_id = player.league_id;
+        team.team_id = player.team_id;
+        let player_model: PlayerModel = {
+            ...player,
+            ...physical_caracteristics,
+            ...financial_data,
+            ...skills,
+            ...potential_by_position,
+            league: league,
+            team: team,
+            nationality: nationality,
+            player_positions: player_positions
+        };
+        return player_model;
+    }
+
+    static convertToEntity(player: PlayerModel): PlayerEntity {
+        let league: LeagueEntity = player.league;
+        let nationality: NationalityEntity = new NationalityModel();
+        let player_positions: PositionEntity[] = player.player_positions.map(
+            value => {
+                const position = new PositionEntity(value);
+                position.position_id = value.position_id;
+                return position;
+            }
+        );
+        nationality.name = player.nationality.name;
+        league.name = player.league.name;
+
+        let player_entity: PlayerEntity = {
+            ...player,
+            physical_caracteristics: player,
+            financial_data: player,
+            potential_by_position: player,
+            skills: player,
+            club_name: player.team.name,
+            nationality: nationality.name,
+            player_positions: player_positions,
+            league_name: player.league.name
+        };
+        return player_entity;
+    }
 }

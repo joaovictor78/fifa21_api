@@ -5,7 +5,7 @@ import TeamsRepository from '../../infra/repositories/teams.repository';
 import { TypeOrmPgHelper } from '../../infra/db/typeorm-pg-helper';
 import NationalitiesRepository from '../../infra/repositories/nationalities.repository';
 import PositionsRepository from '../../infra/repositories/positions.repository';
-import PlayersRepository from '../../infra/repositories/players-repository';
+import PlayersRepository from '../../infra/repositories/players.repository';
 import PositionModel from '../../infra/models/position.model';
 import { Repository } from 'typeorm';
 import { AppDataSource } from '../../infra/db/database.config';

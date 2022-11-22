@@ -1,9 +1,19 @@
 {
-        "compilerOptions": {
-            "outDir": "./dist",
-            "module": "commonjs",
-            "target": "es2020",
-            "esModuleInterop": true,
-            "allowJs": true
-        }   
+    "compilerOptions": {
+        "outDir": "./dist",
+        "module": "commonjs",
+        "target": "es2019",
+
+        "esModuleInterop": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["ES2021.String"],
+        "paths": {
+            "@/*": ["src/*"],
+            "@test/*": ["test/*"]
+        },
+        "watch": true
+    }
 }
