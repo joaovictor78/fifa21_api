@@ -1,0 +1,43 @@
+"use strict";
+exports.__esModule = true;
+var PlayerEntity = /** @class */ (function () {
+    function PlayerEntity(_a) {
+        var sofifa_id = _a.sofifa_id, player_url = _a.player_url, short_name = _a.short_name, long_name = _a.long_name, nationality = _a.nationality, club_name = _a.club_name, league_name = _a.league_name, league_rank = _a.league_rank, overall = _a.overall, potential = _a.potential, player_positions = _a.player_positions, preferred_foot = _a.preferred_foot, international_reputation = _a.international_reputation, weak_foot = _a.weak_foot, skill_moves = _a.skill_moves, work_rate = _a.work_rate, player_tags = _a.player_tags, team_position = _a.team_position, team_jersey_number = _a.team_jersey_number, loaned_from = _a.loaned_from, joined = _a.joined, contract_valid_until = _a.contract_valid_until, nation_position = _a.nation_position, nation_jersey_number = _a.nation_jersey_number, pace = _a.pace, shooting = _a.shooting, passing = _a.passing, dribbling = _a.dribbling, defending = _a.defending, physic = _a.physic, physical_caracteristics = _a.physical_caracteristics, financial_data = _a.financial_data, skills = _a.skills, potential_by_position = _a.potential_by_position;
+        this.sofifa_id = sofifa_id;
+        this.player_url = player_url;
+        this.short_name = short_name;
+        this.long_name = long_name;
+        this.nationality = nationality;
+        this.club_name = club_name;
+        this.league_name = league_name;
+        this.league_rank = league_rank;
+        this.overall = overall;
+        this.potential = potential;
+        this.player_positions = player_positions;
+        this.preferred_foot = preferred_foot;
+        this.international_reputation = international_reputation;
+        this.weak_foot = weak_foot;
+        this.skill_moves = skill_moves;
+        this.work_rate = work_rate;
+        this.player_tags = player_tags;
+        this.team_position = team_position;
+        this.team_jersey_number = team_jersey_number;
+        this.loaned_from = loaned_from;
+        this.joined = joined;
+        this.contract_valid_until = contract_valid_until;
+        this.nation_position = nation_position;
+        this.nation_jersey_number = nation_jersey_number;
+        this.pace = pace;
+        this.shooting = shooting;
+        this.passing = passing;
+        this.dribbling = dribbling;
+        this.defending = defending;
+        this.physic = physic;
+        this.physical_caracteristics = physical_caracteristics;
+        this.financial_data = financial_data;
+        this.skills = skills;
+        this.potential_by_position = potential_by_position;
+    }
+    return PlayerEntity;
+}());
+exports["default"] = PlayerEntity;
