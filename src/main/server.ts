@@ -1,8 +1,11 @@
 import { TypeOrmPgHelper } from '../infra/db/typeorm-pg-helper';
 import app from './configs/app';
+
+const port = process.env.PORT || 3000;
+
 TypeOrmPgHelper.connect()
     .then(() => {
-        app.listen(3000, () => {
+        app.listen(port, () => {
             console.log('rodando server');
         });
     })
