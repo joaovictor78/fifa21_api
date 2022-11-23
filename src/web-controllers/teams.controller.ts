@@ -14,7 +14,7 @@ export default class TeamsController {
     public async findAllTeams(request: HttpRequest): Promise<HttpResponse> {
         try {
             const teams = await this.teamsRepository.findAllTeams(
-                request.body
+                request.query_parameters
             );
             return ok(teams);
         } catch (error) {
@@ -23,11 +23,11 @@ export default class TeamsController {
     }
     public async findAllTeamsByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.team_name) {
+            if (!request.query_parameters.team_name) {
                 return badRequest(new MissingParamError('team_name').message);
             }
             const teams = await this.teamsRepository.findTeamsByName(
-                request.body
+                request.query_parameters
             );
             return ok(teams);
         } catch (error) {

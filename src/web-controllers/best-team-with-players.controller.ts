@@ -21,7 +21,7 @@ export default class BestTeamWithPlayersController{
     }
     public async findBestTeamWithPlayersByLeague(request: HttpRequest): Promise<HttpResponse> {
         try {
-            const league_id = request.body.league_id;
+            const league_id = request.query_parameters.league_id;
             if (!league_id) {
                 return badRequest(new MissingParamError('league_id').message);
             }
@@ -34,9 +34,9 @@ export default class BestTeamWithPlayersController{
 
     public async findBestTeamWithPlayersByNationality(request: HttpRequest): Promise<HttpResponse> {
         try {
-            const nationality_id = request.body.nationality_id;
+            const nationality_id = request.query_parameters.nationality_id;
 
-            if (!request.body.nationality_id) {
+            if (!request.query_parameters.nationality_id) {
                 return badRequest(new MissingParamError('nationality_id').message);
             }
             const time = await this.bestTeamRepository.findBestTeamWithPlayersByNationality(nationality_id);

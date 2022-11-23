@@ -14,7 +14,7 @@ export default class LeaguesController {
     public async findAllLeagues(request: HttpRequest): Promise<HttpResponse> {
         try {
             const leagues = await this.leaguesRepository.findAllLeagues(
-                request.body
+                request.query_parameters
             );
             return ok(leagues);
         } catch (error) {
@@ -23,11 +23,11 @@ export default class LeaguesController {
     }
     public async findAllLeaguesByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.team_name) {
+            if (!request.query_parameters.team_name) {
                 return badRequest(new MissingParamError('league_name').message);
             }
             const leagues = await this.leaguesRepository.findLeaguesByName(
-                request.body
+                request.query_parameters
             );
             return ok(leagues);
         } catch (error) {

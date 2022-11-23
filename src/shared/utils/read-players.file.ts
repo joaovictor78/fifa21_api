@@ -101,7 +101,7 @@ async function start() {
                 AppDataSource.getRepository(TeamModel);
             const { team_id } = await teamRepository.findOne({
                 where: {
-                    name: data.team_id
+                    name: data.club_name
                 }
             });
             const nationalityRepository: Repository<NationalityModel> =

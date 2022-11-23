@@ -14,6 +14,6 @@
             "@/*": ["src/*"],
             "@test/*": ["test/*"]
         },
-        "watch": false
+        "watch": true
     }
 }

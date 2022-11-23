@@ -14,7 +14,7 @@ export default class NationalitiesController {
     public async findAllNationalities(request: HttpRequest): Promise<HttpResponse> {
         try {
             const Nationalities = await this.nationalitiesRepository.findAllNationalities(
-                request.body
+                request.query_parameters
             );
             return ok(Nationalities);
         } catch (error) {
@@ -23,11 +23,11 @@ export default class NationalitiesController {
     }
     public async findAllNationalitiesByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.team_name) {
+            if (!request.query_parameters.team_name) {
                 return badRequest(new MissingParamError('nationality_name').message);
             }
             const Nationalities = await this.nationalitiesRepository.findNationalitiesByName(
-                request.body
+                request.query_parameters
             );
             return ok(Nationalities);
         } catch (error) {

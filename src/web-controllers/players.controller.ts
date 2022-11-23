@@ -13,7 +13,7 @@ export default class PlayersController {
     public async findAllPlayers(request: HttpRequest): Promise<HttpResponse> {
         try {
             const players = await this.playersRepository.findAllPlayers(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -23,11 +23,11 @@ export default class PlayersController {
     }
     public async findPlayersByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.player_name) {
+            if (!request.query_parameters.player_name) {
                 return badRequest(new MissingParamError('player_name').message);
             }
             const players = await this.playersRepository.findPlayersByName(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -37,11 +37,11 @@ export default class PlayersController {
     }
     public async findPlayersByTeam(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.team_id) {
+            if (!request.query_parameters.team_id) {
                 return badRequest(new MissingParamError('team_id').message);
             }
             const players = await this.playersRepository.findPlayersByTeam(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -52,11 +52,11 @@ export default class PlayersController {
 
     public async findPlayersByLeague(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.league_id) {
+            if (!request.query_parameters.league_id) {
                 return badRequest(new MissingParamError('league_id').message);
             }
             const players = await this.playersRepository.findPlayersByLeague(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -67,11 +67,11 @@ export default class PlayersController {
 
     public async findPlayersByNationality(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.nationality_id) {
+            if (!request.query_parameters.nationality_id) {
                 return badRequest(new MissingParamError('nationality_id').message);
             }
             const players = await this.playersRepository.findPlayersByNationality(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -82,11 +82,11 @@ export default class PlayersController {
 
     public async findPlayersByPosition(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.position_id) {
+            if (!request.query_parameters.position_id) {
                 return badRequest(new MissingParamError('position_id').message);
             }
             const players = await this.playersRepository.findPlayersByPosition(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -97,11 +97,11 @@ export default class PlayersController {
 
     public async findPlayerById(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.player_id) {
+            if (!request.query_parameters.player_id) {
                 return badRequest(new MissingParamError('player_id').message);
             }
             const players = await this.playersRepository.findPlayerById(
-                request.body
+                request.query_parameters
             );
             
             return ok(players);
@@ -112,12 +112,12 @@ export default class PlayersController {
 
     public async findBestPlayers(request: HttpRequest): Promise<HttpResponse> {
         try {
-            const {top_players_number } = request.body;
+            const {top_players_number } = request.query_parameters;
             if (!top_players_number) {
                 return badRequest(new MissingParamError('top_players_number').message);
             }
             const players = await this.playersRepository.findBestPlayers(
-                request.body
+                request.query_parameters
             );
             return ok(players);
         } catch (error) {
@@ -127,7 +127,7 @@ export default class PlayersController {
 
     public async findBestPlayersByPosition(request: HttpRequest): Promise<HttpResponse> {
         try {
-            const {top_players_number, position_id } = request.body;
+            const {top_players_number, position_id } = request.query_parameters;
             if (!top_players_number) {
                 return badRequest(new MissingParamError('top_players_number').message);
             }
@@ -135,7 +135,7 @@ export default class PlayersController {
                 return badRequest(new MissingParamError('position_id').message);
             }
             const players = await this.playersRepository.findBestPlayersByPosition(
-                request.body
+                request.query_parameters
             );
             return ok(players);
         } catch (error) {
@@ -145,7 +145,7 @@ export default class PlayersController {
 
     public async findBestPlayersByNationality(request: HttpRequest): Promise<HttpResponse> {
         try {
-            const {top_players_number, nationality_id } = request.body;
+            const {top_players_number, nationality_id } = request.query_parameters;
             if (!top_players_number) {
                 return badRequest(new MissingParamError('top_players_number').message);
             }
@@ -153,7 +153,7 @@ export default class PlayersController {
                 return badRequest(new MissingParamError('nationality_id').message);
             }
             const players = await this.playersRepository.findBestPlayersByNationality(
-                request.body
+                request.query_parameters
             );
             return ok(players);
         } catch (error) {
@@ -163,7 +163,7 @@ export default class PlayersController {
 
     public async findBestPlayersByLeague(request: HttpRequest): Promise<HttpResponse> {
         try {
-            const {top_players_number, league_id } = request.body;
+            const {top_players_number, league_id } = request.query_parameters;
             if (!top_players_number) {
                 return badRequest(new MissingParamError('top_players_number').message);
             }
@@ -171,7 +171,7 @@ export default class PlayersController {
                 return badRequest(new MissingParamError('league_id').message);
             }
             const players = await this.playersRepository.findBestPlayersByNationality(
-                request.body
+                request.query_parameters
             );
             return ok(players);
         } catch (error) {

@@ -14,7 +14,7 @@ export default class PositionsController {
     public async findAllPositions(request: HttpRequest): Promise<HttpResponse> {
         try {
             const positions = await this.positionsRepository.findAllPositions(
-                request.body
+                request.query_parameters
             );
             return ok(positions);
         } catch (error) {
@@ -23,11 +23,11 @@ export default class PositionsController {
     }
     public async findAllPositionsByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.body.team_name) {
+            if (!request.query_parameters.team_name) {
                 return badRequest(new MissingParamError('position_name').message);
             }
             const positions = await this.positionsRepository.findPositionsByName(
-                request.body
+                request.query_parameters
             );
             return ok(positions);
         } catch (error) {
