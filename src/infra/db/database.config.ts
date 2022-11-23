@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    url: "postgres://aljwwvhk:ZWc91SZOXM2CfKNL3TinLltUrte0RfJT@babar.db.elephantsql.com/aljwwvhk",
+    url: "postgres://acsigkix:pkAjUAM-FkMIroJqOA3inpSrRRq7lbIG@babar.db.elephantsql.com/acsigkix",
     migrations: [__dirname + '/migration/*{.ts,.js}'],
     entities: [__dirname + '/../**/*.model{.ts,.js}'],
     synchronize: true,
