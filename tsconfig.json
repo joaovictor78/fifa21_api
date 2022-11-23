@@ -13,7 +13,6 @@
         "paths": {
             "@/*": ["src/*"],
             "@test/*": ["test/*"]
-        },
-        "watch": true
+        }
     }
 }
