@@ -6,5 +6,8 @@ export const AppDataSource = new DataSource({
     migrations: [__dirname + '/migration/*{.ts,.js}'],
     entities: [__dirname + '/../**/*.model{.ts,.js}'],
     synchronize: true,
-    migrationsRun: true
+    migrationsRun: true,
+    extra: {
+        max: 1
+    }
 });
