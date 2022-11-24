@@ -30,7 +30,7 @@ export default (router: Router): void => {
 
     router.get(
         '/players-by-league',
-        adapterFindPlayersByPositionRoute(playersControllerFactory())
+        adapterFindPlayersByLeagueRoute(playersControllerFactory())
     );
 
     router.get(
