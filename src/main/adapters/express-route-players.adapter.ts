@@ -93,7 +93,7 @@ export const adapterFindBestPlayersRoute = (controller: PlayersController) => {
             query_parameters: req.query,
             body: req.body
         };
-        const httpResponse = await controller.findBestPlayersByPosition(httpRequest);
+        const httpResponse = await controller.findBestPlayers(httpRequest);
         res.status(httpResponse.statusCode).json(httpResponse.body);
     };
 };
