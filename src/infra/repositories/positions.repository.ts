@@ -40,7 +40,7 @@ export default class PositionsRepository implements IPositionsRepository {
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, positions_model });
+            return right({ total, positions: positions_model });
         }
         catch (error) {
             throw error;
@@ -64,7 +64,7 @@ export default class PositionsRepository implements IPositionsRepository {
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, positions_model });
+            return right({ total, positions: positions_model });
         }
         catch (error) {
             throw error;

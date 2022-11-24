@@ -36,7 +36,7 @@ export default class TeamsRepository implements ITeamsRepository {
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, teams_model });
+            return right({ total, teams: teams_model });
         }
         catch (error) {
             throw error;
@@ -60,7 +60,7 @@ export default class TeamsRepository implements ITeamsRepository {
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, teams_model });
+            return right({ total, teams: teams_model });
         }
         catch (error) {
             throw error;

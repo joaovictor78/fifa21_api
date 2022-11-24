@@ -30,14 +30,14 @@ export default class LeaguesRepository implements ILeaguesRepository {
 
     async findAllLeagues({ page = 1, limit = 10 }: { page: number; limit: number }) {
         try{
-            const [teams_model, total] = await this.dataSource.findAndCount({
+            const [leagues_model, total] = await this.dataSource.findAndCount({
                 order: {
                     name: "ASC"
                 },
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, teams_model });
+            return right({ total, leagues: leagues_model });
         }
         catch (error) {
             throw error;
@@ -61,7 +61,7 @@ export default class LeaguesRepository implements ILeaguesRepository {
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, leagues_model });
+            return right({ total, leagues: leagues_model });
         }
         catch (error) {
             throw error;

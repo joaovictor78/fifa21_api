@@ -43,7 +43,7 @@ export default class NationalitiesRepository
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, nationality_model });
+            return right({ total, nationalities: nationality_model });
         }
         catch (error) {
             throw error;
@@ -67,7 +67,7 @@ export default class NationalitiesRepository
                 take: limit,
                 skip: limit * page - limit
             });
-            return right({ total, nationalities_model });
+            return right({ total, nationalities: nationalities_model });
         }
         catch (error) {
             throw error;
