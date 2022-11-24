@@ -23,7 +23,7 @@ export default class LeaguesController {
     }
     public async findAllLeaguesByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.query_parameters.team_name) {
+            if (!request.query_parameters.league_name) {
                 return badRequest(new MissingParamError('league_name').message);
             }
             const leagues = await this.leaguesRepository.findLeaguesByName(
