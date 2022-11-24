@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { adapterFindAllPlayersRoute, adapterFindBestPlayersByNationalityRoute, adapterFindBestPlayersByPositionRoute, adapterFindBestPlayersRoute, adapterFindPlayerByIdRoute, adapterFindPlayersByLeagueRoute, adapterFindPlayersByNameRoute, adapterFindPlayersByNationalityRoute, adapterFindPlayersByPositionRoute, adapterFindPlayersByTeamRoute } from '../adapters/express-route-players.adapter';
+import { adapterFindAllPlayersRoute, adapterFindBestPlayersByLeagueRoute, adapterFindBestPlayersByNationalityRoute, adapterFindBestPlayersByPositionRoute, adapterFindBestPlayersRoute, adapterFindPlayerByIdRoute, adapterFindPlayersByLeagueRoute, adapterFindPlayersByNameRoute, adapterFindPlayersByNationalityRoute, adapterFindPlayersByPositionRoute, adapterFindPlayersByTeamRoute } from '../adapters/express-route-players.adapter';
 import { playersControllerFactory } from '../factories/players.factory';
 
 export default (router: Router): void => {
@@ -50,7 +50,7 @@ export default (router: Router): void => {
     
     router.get(
         '/best-players-by-league',
-        adapterFindBestPlayersByNationalityRoute(playersControllerFactory())
+        adapterFindBestPlayersByLeagueRoute(playersControllerFactory())
     );
 
     router.get(
