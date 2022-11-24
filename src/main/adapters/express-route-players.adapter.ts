@@ -117,7 +117,7 @@ export const adapterFindBestPlayersByNationalityRoute = (controller: PlayersCont
             query_parameters: req.query,
             body: req.body
         };
-        const httpResponse = await controller.findBestPlayersByPosition(httpRequest);
+        const httpResponse = await controller.findBestPlayersByNationality(httpRequest);
         res.status(httpResponse.statusCode).json(httpResponse.body);
     };
 };
