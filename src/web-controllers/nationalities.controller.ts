@@ -23,7 +23,7 @@ export default class NationalitiesController {
     }
     public async findAllNationalitiesByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.query_parameters.team_name) {
+            if (!request.query_parameters.nationality_name) {
                 return badRequest(new MissingParamError('nationality_name').message);
             }
             const Nationalities = await this.nationalitiesRepository.findNationalitiesByName(
