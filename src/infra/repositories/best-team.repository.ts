@@ -75,7 +75,7 @@ export default class BestTeamWithPlayersRepository
             INNER JOIN nationality n on n.nationality_id  = p."nationalityNationalityId"
             INNER JOIN team t on t.team_id  = p."teamTeamId"  
             INNER JOIN league l on l.league_id  = p."leagueLeagueId"
-            where p2."name" = 'GK' and  l."league_id"  = ${nationality_id}
+            where p2."name" = 'GK' and  l."nationality_id"  = ${nationality_id}
             order by p.potential  desc limit 1`);
             const cb: PlayerDTO[] = await this.findBestPlayerByLeague('cb', 2, nationality_id) as PlayerDTO[];
             const lb: PlayerDTO  = await this.findBestPlayerByLeague('lb', 1, nationality_id) as PlayerDTO;
