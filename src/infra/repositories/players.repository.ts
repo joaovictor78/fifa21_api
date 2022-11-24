@@ -274,7 +274,7 @@ export default class PlayersRepository implements IPlayersRepository {
     }): Promise<Either<Error, PlayersDTO>>{
         try{
             const players_model = await this.dataSource.query(`
-            select p.*, t."name"as club_name, l."name"  as league_name, n."name"  as nationality
+            select distinct p.*, t."name"as club_name, l."name"  as league_name, n."name"  as nationality
             FROM player  p 
             INNER JOIN players_positions pp  on p.sofifa_id  = pp.player_id
             INNER JOIN "position" p2  on p2.position_id  = pp.position_id 
