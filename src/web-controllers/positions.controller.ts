@@ -23,7 +23,7 @@ export default class PositionsController {
     }
     public async findAllPositionsByName(request: HttpRequest): Promise<HttpResponse> {
         try {
-            if (!request.query_parameters.team_name) {
+            if (!request.query_parameters.position_name) {
                 return badRequest(new MissingParamError('position_name').message);
             }
             const positions = await this.positionsRepository.findPositionsByName(
