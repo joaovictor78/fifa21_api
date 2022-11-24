@@ -170,7 +170,7 @@ export default class PlayersController {
             if(!league_id){
                 return badRequest(new MissingParamError('league_id').message);
             }
-            const players = await this.playersRepository.findBestPlayersByNationality(
+            const players = await this.playersRepository.findBestPlayersByLeague(
                 request.query_parameters
             );
             return ok(players);
